@@ -30,11 +30,11 @@ import org.elasticsearch.node.internal.InternalNode;
 import java.util.Map;
 import java.util.Set;
 
-import static org.elasticsearch.common.collect.Maps.*;
-import static org.elasticsearch.common.collect.Sets.*;
-import static org.elasticsearch.common.settings.ImmutableSettings.Builder.*;
-import static org.elasticsearch.common.settings.ImmutableSettings.*;
-import static org.elasticsearch.node.NodeBuilder.*;
+import static org.elasticsearch.common.collect.Maps.newHashMap;
+import static org.elasticsearch.common.collect.Sets.newHashSet;
+import static org.elasticsearch.common.settings.ImmutableSettings.Builder.EMPTY_SETTINGS;
+import static org.elasticsearch.common.settings.ImmutableSettings.settingsBuilder;
+import static org.elasticsearch.node.NodeBuilder.nodeBuilder;
 
 /**
  * @author imotov
@@ -51,7 +51,7 @@ public class AbstractJettyHttpServerTests {
     private Settings defaultSettings = ImmutableSettings
             .settingsBuilder()
             .put("cluster.name", "test-cluster-" + NetworkUtils.getLocalAddress().getHostName())
-            .put("http.type", JettyHttpServerTransportModule.class.getName())
+            .put("http.type", JettyHttpServerTransport.class.getName())
             .put("sonian.elasticsearch.http.jetty.port", "9290-9300")
             .put("node.local", true)
             .put("gateway.type", "none")
